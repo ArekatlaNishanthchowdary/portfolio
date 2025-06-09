@@ -147,7 +147,7 @@ const ResumeModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
                 <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
                   <h3 className="text-xl font-bold text-gradient">My Resume</h3>
                   <a 
-                    href="/resume.pdf" 
+                    href={getAssetPath("resume.pdf")}
                     download="Arekatala_Nishanth_Resume.pdf"
                     className="btn btn-primary text-sm px-4 py-2"
                   >
@@ -156,7 +156,7 @@ const ResumeModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
                 </div>
                 <div className="flex-1 overflow-hidden">
                   <object
-                    data="/resume.pdf"
+                    data={getAssetPath("resume.pdf")}
                     type="application/pdf"
                     className="w-full h-full"
                   >

@@ -8,4 +8,20 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+    minify: 'terser',
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['react', 'react-dom'],
+          'framer': ['framer-motion'],
+          'three': ['three', '@react-three/fiber', '@react-three/drei']
+        }
+      }
+    }
+  }
 });
