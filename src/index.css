@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 10 36 99; /* #0A2463 */
+    --color-secondary: 57 162 219; /* #39A2DB */
+    --color-accent: 255 134 0; /* #FF8600 */
+    --color-success: 34 197 94; /* #22C55E */
+    --color-warning: 234 179 8; /* #EAB308 */
+    --color-error: 239 68 68; /* #EF4444 */
+    --color-light: 248 250 252; /* #F8FAFC */
+    --color-dark: 15 23 42; /* #0F172A */
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  body {
+    @apply antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold leading-tight;
+  }
+  
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl sm:text-4xl;
+  }
+  
+  h3 {
+    @apply text-2xl sm:text-3xl;
+  }
+  
+  p {
+    @apply leading-relaxed;
+  }
+  
+  section {
+    @apply py-16 md:py-24;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent animate-gradient-x;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 backdrop-blur-sm;
+  }
+  
+  .btn-primary {
+    @apply bg-primary/90 text-white hover:bg-primary focus:ring-primary/50;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary/90 text-white hover:bg-secondary focus:ring-secondary/50;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary/90 text-primary hover:bg-primary hover:text-white focus:ring-primary/50;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-8 text-center text-gradient;
+  }
+  
+  .section-subtitle {
+    @apply text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center mb-12;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md bg-white/10 dark:bg-dark/10 border border-white/20 dark:border-dark/20;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 15s ease infinite;
+}
