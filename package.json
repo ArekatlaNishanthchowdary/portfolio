@@ -1,20 +1,20 @@
 {
-  "name": "nishanth-portfolio",
+  "name": "portfolio-site",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.0.0",
   "type": "module",
   "homepage": "https://arekatlanishanthchowdary.github.io/portfolio/",
   "scripts": {
-    "dev": "npx vite",
-    "build": "npx vite build",
-    "build:custom": "cross-env BUILD_MODE=CUSTOM_DOMAIN npx vite build",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:custom": "tsc && vite build --mode CUSTOM_DOMAIN",
     "postbuild": "node copy-assets.js",
-    "lint": "eslint .",
-    "preview": "npx vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
     "predeploy": "npm run build",
     "predeploy:custom": "npm run build:custom",
-    "deploy": "node deploy.js",
-    "deploy:custom": "node deploy-custom.js"
+    "deploy": "npm run build && node deploy.js",
+    "deploy:custom": "npm run build:custom && node deploy-custom.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

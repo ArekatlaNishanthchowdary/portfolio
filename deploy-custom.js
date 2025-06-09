@@ -26,60 +26,28 @@ const notFoundHtml = `
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Single Page Apps for GitHub Pages</title>
+    <title>Nishanth Arekatla - Portfolio</title>
     <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
+      // Single Page Apps for GitHub Pages with custom domain
       // MIT License
       // https://github.com/rafgraph/spa-github-pages
-      // This script takes the current URL and converts the path and query
-      // string into just a query string, and then redirects the browser
-      // to the new URL with only a query string and hash fragment.
-      var pathSegmentsToKeep = 0;
-
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        '/' +
-        l.pathname.split('/').slice(0, pathSegmentsToKeep + 1).join('/') + '/?/' +
-        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        '/' + 
+        l.pathname.slice(1).split('/').join('/') +
+        (l.search ? l.search : '') +
         l.hash
       );
     </script>
   </head>
   <body>
+    <h1>Redirecting...</h1>
   </body>
 </html>
 `;
 
 fs.writeFileSync(path.join(distDir, '404.html'), notFoundHtml);
-
-// Add SPA redirect script to index.html
-const indexPath = path.join(distDir, 'index.html');
-let indexHtml = fs.readFileSync(indexPath, 'utf8');
-
-// Add SPA redirect script
-const redirectScript = `
-  <script type="text/javascript">
-    // Single Page Apps for GitHub Pages
-    // MIT License
-    // https://github.com/rafgraph/spa-github-pages
-    (function(l) {
-      if (l.search[1] === '/' ) {
-        var decoded = l.search.slice(1).split('&').map(function(s) { 
-          return s.replace(/~and~/g, '&')
-        }).join('?');
-        window.history.replaceState(null, null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-        );
-      }
-    }(window.location))
-  </script>
-`;
-
-// Insert script before closing head tag
-indexHtml = indexHtml.replace('</head>', `${redirectScript}</head>`);
-fs.writeFileSync(indexPath, indexHtml);
 
 // Deploy to GitHub Pages
 ghpages.publish(
