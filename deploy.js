@@ -9,12 +9,15 @@ const __dirname = path.dirname(__filename);
 
 // Build directory
 const buildDir = 'dist';
+const distDir = path.join(__dirname, buildDir);
 
-// Copy the 404.html to the build directory
-fs.copyFileSync(
-  path.resolve(__dirname, 'public', '404.html'),
-  path.resolve(__dirname, buildDir, '404.html')
-);
+// Make sure 404.html is in place
+if (!fs.existsSync(path.join(distDir, '404.html'))) {
+  fs.copyFileSync(
+    path.resolve(__dirname, 'public', '404.html'),
+    path.resolve(__dirname, buildDir, '404.html')
+  );
+}
 
 // Create a .nojekyll file to bypass Jekyll processing
 fs.writeFileSync(path.resolve(__dirname, buildDir, '.nojekyll'), '');

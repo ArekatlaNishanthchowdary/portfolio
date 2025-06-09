@@ -1,12 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Check if we're building for GitHub Pages or custom domain
-const isCustomDomain = process.env.BUILD_MODE === 'CUSTOM_DOMAIN';
-
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: isCustomDomain ? '/' : '/portfolio/',
+  base: '/portfolio/',
   plugins: [react()],
   optimizeDeps: {
     exclude: ['lucide-react'],
