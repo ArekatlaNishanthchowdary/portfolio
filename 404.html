@@ -1,18 +1,18 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Nishanth Arekatla - Portfolio</title>
     <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
+      // Single Page Apps for GitHub Pages with custom domain
       // MIT License
       // https://github.com/rafgraph/spa-github-pages
-      var segmentCount = 1; // Assuming portfolio is at the root level: /portfolio/
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        '/portfolio/' + 
-        l.pathname.slice(1).split('/').slice(segmentCount).join('/') +
+        '/' + 
+        l.pathname.slice(1).split('/').join('/') +
         (l.search ? l.search : '') +
         l.hash
       );
@@ -21,4 +21,4 @@
   <body>
     <h1>Redirecting...</h1>
   </body>
-</html> 
+</html>
