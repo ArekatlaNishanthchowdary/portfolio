@@ -22,6 +22,8 @@ export default defineConfig({
           'three': ['three', '@react-three/fiber', '@react-three/drei']
         }
       }
-    }
-  }
+    },
+    copyPublicDir: true
+  },
+  publicDir: 'public'
 });
