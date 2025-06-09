@@ -6,8 +6,8 @@
   "homepage": "https://arekatlanishanthchowdary.github.io/portfolio/",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "build:custom": "tsc && vite build --mode CUSTOM_DOMAIN",
+    "build": "tsc && vite build && node copy-assets.js",
+    "build:custom": "tsc && vite build --mode CUSTOM_DOMAIN && node copy-assets.js",
     "postbuild": "node copy-assets.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
