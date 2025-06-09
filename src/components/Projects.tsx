@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import GalleryModal from './GalleryModal';
 import './HexGrid.css';
+import { getAssetPath } from '../utils/pathUtils';
 
 interface Project {
   id: number;

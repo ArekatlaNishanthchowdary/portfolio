@@ -5,6 +5,7 @@ import RotatingText from './RotatingText';
 import FloatingElements from './FloatingElements';
 import Magnet from './Magnet';
 import ProfileCard from './ProfileCard';
+import { getAssetPath } from '../utils/pathUtils';
 
 // Array of phrases to cycle through
 const phrases = [
@@ -351,7 +352,7 @@ const Hero: React.FC = () => {
               className="order-1 lg:order-2 flex justify-center"
             >
               <ProfileCard
-                avatarUrl="/certificates/images/me.jpg"
+                avatarUrl={getAssetPath("certificates/images/me.png")}
                 name="Arekatla Nishanth Chowdary"
                 title="AI Engineer"
                 handle="nishanthchowdary"

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import GalleryModal from './GalleryModal';
 import './HexGrid.css';
+import { getAssetPath } from '../utils/pathUtils';
 
 interface Certificate {
   id: number;
@@ -22,9 +23,9 @@ const certificates: Certificate[] = [
     issuer: "Infosys",
     date: "2023",
     description: "Certificate for Introduction to Deep Learning by Infosys.",
-    image: "/certificates/images/Introduction to Deep Learning infosys.png",
+    image: getAssetPath("certificates/images/Introduction to Deep Learning infosys.png"),
     category: "Deep Learning",
-    pdf: "/certificates/Introduction to Deep Learning infosys.pdf",
+    pdf: getAssetPath("certificates/Introduction to Deep Learning infosys.pdf"),
   },
   {
     id: 2,
@@ -32,9 +33,9 @@ const certificates: Certificate[] = [
     issuer: "HackerRank",
     date: "2023",
     description: "Certificate for Problem Solving Intermediate.",
-    image: "/certificates/images/problem_solving_intermediate certificate.png",
+    image: getAssetPath("certificates/images/problem_solving_intermediate certificate.png"),
     category: "Problem Solving",
-    pdf: "/certificates/problem_solving_intermediate certificate.pdf",
+    pdf: getAssetPath("certificates/problem_solving_intermediate certificate.pdf"),
   },
   {
     id: 3,
@@ -42,9 +43,9 @@ const certificates: Certificate[] = [
     issuer: "Oracle",
     date: "2023",
     description: "Oracle OCI Certificate.",
-    image: "/certificates/images/Oracle OCI.png",
+    image: getAssetPath("certificates/images/Oracle OCI.png"),
     category: "Cloud",
-    pdf: "/certificates/Oracle OCI.pdf",
+    pdf: getAssetPath("certificates/Oracle OCI.pdf"),
   },
   {
     id: 4,
@@ -52,9 +53,9 @@ const certificates: Certificate[] = [
     issuer: "Oracle",
     date: "2023",
     description: "Oracle OCI AI Certificate.",
-    image: "/certificates/images/Oracle OCI.png",
+    image: getAssetPath("certificates/images/Oracle OCI.png"),
     category: "Cloud",
-    pdf: "/certificates/Oracle OCI AI.pdf",
+    pdf: getAssetPath("certificates/Oracle OCI AI.pdf"),
   },
   {
     id: 5,
@@ -62,9 +63,9 @@ const certificates: Certificate[] = [
     issuer: "NPTEL",
     date: "2023",
     description: "Joy of Computing Using Python by NPTEL.",
-    image: "/certificates/images/Joy of computing using python nptel.png",
+    image: getAssetPath("certificates/images/Joy of computing using python nptel.png"),
     category: "Python",
-    pdf: "/certificates/Joy of computing using python nptel.pdf",
+    pdf: getAssetPath("certificates/Joy of computing using python nptel.pdf"),
   },
   {
     id: 6,
@@ -72,9 +73,9 @@ const certificates: Certificate[] = [
     issuer: "Infosys",
     date: "2023",
     description: "Introduction to Python by Infosys.",
-    image: "/certificates/images/Introduction to python infosys.png",
+    image: getAssetPath("certificates/images/Introduction to python infosys.png"),
     category: "Python",
-    pdf: "/certificates/Introduction to python infosys.pdf",
+    pdf: getAssetPath("certificates/Introduction to python infosys.pdf"),
   },
   {
     id: 7,
@@ -82,9 +83,9 @@ const certificates: Certificate[] = [
     issuer: "Infosys",
     date: "2023",
     description: "Introduction to Artificial Intelligence by Infosys.",
-    image: "/certificates/images/Introduction to artificial Intelligence infosys.png",
+    image: getAssetPath("certificates/images/Introduction to artificial Intelligence infosys.png"),
     category: "Artificial Intelligence",
-    pdf: "/certificates/Introduction to artificial Intelligence infosys.pdf",
+    pdf: getAssetPath("certificates/Introduction to artificial Intelligence infosys.pdf"),
   },
   {
     id: 8,
@@ -92,9 +93,9 @@ const certificates: Certificate[] = [
     issuer: "Unknown",
     date: "2023",
     description: "Deep Learning Certificate.",
-    image: "/certificates/images/Deep_Learning_Arekatla_Certificate.png",
+    image: getAssetPath("certificates/images/Deep_Learning_Arekatla_Certificate.png"),
     category: "Deep Learning",
-    pdf: "/certificates/Deep_Learning_Arekatla_Certificate.pdf",
+    pdf: getAssetPath("certificates/Deep_Learning_Arekatla_Certificate.pdf"),
   },
   {
     id: 9,
@@ -102,9 +103,9 @@ const certificates: Certificate[] = [
     issuer: "Unknown",
     date: "2023",
     description: "Artificial Intelligence Certificate.",
-    image: "/certificates/images/Arekatla-Nishanth-Chowdary-Artificial-lntelligence-Certificate.png",
+    image: getAssetPath("certificates/images/Arekatla-Nishanth-Chowdary-Artificial-lntelligence-Certificate.png"),
     category: "Artificial Intelligence",
-    pdf: "/certificates/Arekatla-Nishanth-Chowdary-Artificial-Intelligence-Certificate.pdf",
+    pdf: getAssetPath("certificates/Arekatla-Nishanth-Chowdary-Artificial-Intelligence-Certificate.pdf"),
   },
 ];
 
