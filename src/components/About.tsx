@@ -97,19 +97,19 @@ const About: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <FeatureCard 
-            icon={<Brain size={24} className="text-primary" />}
+            icon={<Brain size={24} className="text-white dark:text-white" />}
             title="AI Expertise"
             description="Specialized in machine learning, deep learning, and reinforcement learning for diverse applications."
             delay={0.2}
           />
           <FeatureCard 
-            icon={<BookOpen size={24} className="text-primary" />}
+            icon={<BookOpen size={24} className="text-white dark:text-white" />}
             title="Continuous Learning"
             description="Committed to staying at the forefront of AI advancements through research and practical implementation."
             delay={0.4}
           />
           <FeatureCard 
-            icon={<Award size={24} className="text-primary" />}
+            icon={<Award size={24} className="text-white dark:text-white" />}
             title="Results-Driven"
             description="Focused on delivering AI solutions that provide measurable business value and meaningful impact."
             delay={0.6}
