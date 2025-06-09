@@ -7,11 +7,14 @@
   "scripts": {
     "dev": "npx vite",
     "build": "npx vite build",
+    "build:custom": "cross-env BUILD_MODE=CUSTOM_DOMAIN npx vite build",
     "postbuild": "node copy-assets.js",
     "lint": "eslint .",
     "preview": "npx vite preview",
     "predeploy": "npm run build",
-    "deploy": "node deploy.js"
+    "predeploy:custom": "npm run build:custom",
+    "deploy": "node deploy.js",
+    "deploy:custom": "node deploy-custom.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -30,11 +33,13 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
+    "@types/node": "^22.15.30",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@types/three": "^0.161.2",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.18",
+    "cross-env": "^7.0.3",
     "eslint": "^9.9.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.11",
