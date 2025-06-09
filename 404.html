@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Single Page Apps for GitHub Pages
+        // MIT License
+        // https://github.com/rafgraph/spa-github-pages
+        // This script takes the current URL and converts the path and query
+        // string into a single segment which is then redirected with a hash
+        // to be handled by React Router
+        
+        // Redirect to the correct URL
+        (function() {
+            var l = window.location;
+            var segmentCount = 1; // Portfolio is one level deep: /portfolio/
+            
+            var redirect = l.pathname
+                .replace(/^\//, '')
+                .split('/')
+                .slice(segmentCount)
+                .join('/');
+            
+            if (redirect) {
+                l.replace(
+                    l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+                    '/portfolio/' + (redirect ? '?' + redirect : '')
+                );
+            } else {
+                l.replace(
+                    l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+                    '/portfolio/'
+                );
+            }
+        })();
+    </script>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+</body>
+</html> 
