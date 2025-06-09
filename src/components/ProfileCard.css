@@ -186,10 +186,10 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%) scale(1);
-  bottom: -60px;
+  bottom: -120px;
   height: 120%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 5%;
   opacity: 1;
 }
 
