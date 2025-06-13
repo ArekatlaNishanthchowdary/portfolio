@@ -79,35 +79,33 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     let rafId: number | null = null;
 
     const updateCardTransform = (
-      offsetX: number,
-      offsetY: number,
+      x: number,
+      y: number,
       card: HTMLElement,
       wrap: HTMLDivElement
     ) => {
-      const width = card.clientWidth;
-      const height = card.clientHeight;
+      const rect = wrap.getBoundingClientRect();
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
 
-      const percentX = clamp((100 / width) * offsetX);
-      const percentY = clamp((100 / height) * offsetY);
+      const pointerFromCenterX = (x - centerX) / centerX;
+      const pointerFromCenterY = (y - centerY) / centerY;
 
-      const centerX = percentX - 50;
-      const centerY = percentY - 50;
+      const rotateX = clamp(pointerFromCenterY * -20, -20, 20);
+      const rotateY = clamp(pointerFromCenterX * 20, -20, 20);
 
-      const properties = {
-        "--pointer-x": `${percentX}%`,
-        "--pointer-y": `${percentY}%`,
-        "--background-x": `${adjust(percentX, 0, 100, 35, 65)}%`,
-        "--background-y": `${adjust(percentY, 0, 100, 35, 65)}%`,
-        "--pointer-from-center": `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
-        "--pointer-from-top": `${percentY / 100}`,
-        "--pointer-from-left": `${percentX / 100}`,
-        "--rotate-x": `${round(-(centerX / 5))}deg`,
-        "--rotate-y": `${round(centerY / 4)}deg`,
-      };
-
-      Object.entries(properties).forEach(([property, value]) => {
-        wrap.style.setProperty(property, value);
-      });
+      card.style.setProperty("--rotate-x", `${rotateY}deg`);
+      card.style.setProperty("--rotate-y", `${rotateX}deg`);
+      card.style.setProperty("--pointer-x", `${x}px`);
+      card.style.setProperty("--pointer-y", `${y}px`);
+      card.style.setProperty(
+        "--pointer-from-left",
+        String(clamp((x / rect.width) * 100, 0, 100) / 100)
+      );
+      card.style.setProperty(
+        "--pointer-from-top",
+        String(clamp((y / rect.height) * 100, 0, 100) / 100)
+      );
     };
 
     const createSmoothAnimation = (

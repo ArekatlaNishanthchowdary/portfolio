@@ -67,7 +67,6 @@ const FloatingObject = ({
           metalness={0.7}
           emissive={color}
           emissiveIntensity={0.2}
-          transparent
           opacity={0.9}
         />
       </mesh>

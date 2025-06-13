@@ -1,7 +1,7 @@
 /**
  * Contact.tsx - EmailJS integration, real social links, and template update
  */
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
@@ -17,6 +17,7 @@ const Contact: React.FC = () => {
     threshold: 0.1,
   });
 
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,6 +27,17 @@ const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Initialize EmailJS once on component mount
+  useEffect(() => {
+    emailjs.init({
+      publicKey: EMAILJS_PUBLIC_KEY,
+      blockHeadless: false,
+      limitRate: {
+        throttle: 5000,
+      }
+    });
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -38,21 +50,28 @@ const Contact: React.FC = () => {
     setError(null);
 
     try {
-      await emailjs.send(
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        from_name: formData.name,
+        from_email: formData.email,
+        to_name: "Nishanth Arekatla"
+      };
+
+      const response = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        },
-        EMAILJS_PUBLIC_KEY
+        templateParams
       );
+
+      console.log('SUCCESS!', response.status, response.text);
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (err) {
+      console.error('EmailJS Error:', err);
       setIsSubmitting(false);
       setError('Failed to send message. Please try again later.');
     }
@@ -80,7 +99,7 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-16 md:py-24">
+    <section id="contact" className="py-16 md:py-24 relative">
       <div className="container-custom">
         <motion.div
           ref={ref}
@@ -180,7 +199,7 @@ const Contact: React.FC = () => {
                   <p>I'll get back to you as soon as possible.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit}>
+                <form ref={formRef} onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
